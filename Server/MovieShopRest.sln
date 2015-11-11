@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieShopRest", "MovieShopRest\MovieShopRest.csproj", "{1357DBF4-C5D0-4EC2-B211-D334AB55999E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieShopDAL", "MovieShopDAL\MovieShopDAL.csproj", "{DE7A5612-BFA9-45FD-A75D-2A423013F40F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1357DBF4-C5D0-4EC2-B211-D334AB55999E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1357DBF4-C5D0-4EC2-B211-D334AB55999E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1357DBF4-C5D0-4EC2-B211-D334AB55999E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1357DBF4-C5D0-4EC2-B211-D334AB55999E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE7A5612-BFA9-45FD-A75D-2A423013F40F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE7A5612-BFA9-45FD-A75D-2A423013F40F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE7A5612-BFA9-45FD-A75D-2A423013F40F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE7A5612-BFA9-45FD-A75D-2A423013F40F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
