@@ -18,6 +18,11 @@ namespace MovieShopRest.Controllers
             return facade.GetMovieRepository().ReadAll();
         }
 
+        public Movie GetMovie(int id)
+        {
+            return facade.GetMovieRepository().Find(id);
+        }
+
 
         public void PostMovie(Movie movie)
         {

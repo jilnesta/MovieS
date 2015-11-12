@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DtoModel.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MovieCoverUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.url)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Genres)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieCoverUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.url)
+            </td>
+            <td>
+                @foreach (var genre in item.Genres)
+                { @Html.DisplayFor(modelItem => genre.Name)}
+            </td>
+
+            <td>
+                @*@Html.ActionLink("Update", "Update", new { movieId = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { movieId = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { movieId = item.Id })*@
+            </td>
+        </tr>
+    }
+</table>
