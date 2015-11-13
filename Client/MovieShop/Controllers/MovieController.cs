@@ -21,11 +21,22 @@ namespace MovieShop.Controllers
             return View(movies);
         }
 
-        public ActionResult Create()
+        public ActionResult Create(Movie movie)
         {
-            Movie movie = new Movie() { Genres = new List<Genre>(), MovieCoverUrl = "pic2", Price = 120, Year = DateTime.Now, Description = "Good moviee", Title = "MovieKris", url = "url1" };
+
             facade.GetMovieGateway().Add(movie);
             return View();
+        }
+
+        public ActionResult Delete(int id)
+        {
+            Movie movie = facade.GetMovieGateway().Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            facade.GetMovieGateway().Delete(movie);
+            return RedirectToAction("Index", "Movie");
         }
     }
 }

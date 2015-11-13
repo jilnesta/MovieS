@@ -29,5 +29,25 @@ namespace MovieShopGateway.Services
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
         }
+
+        public Movie Find(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                HttpResponseMessage response =
+                    client.GetAsync("http://localhost:44334/api/movie/{id}").Result;
+                return response.Content.ReadAsAsync<Movie>().Result;
+            }
+        }
+
+        public void Delete(Movie movie)
+        {
+            using (var client = new HttpClient())
+            {
+                HttpResponseMessage response =
+                    client.DeleteAsync("http://localhost:44334/api/movie/{id}" + movie.Id).Result;
+                
+            }
+        }
     }
 }
