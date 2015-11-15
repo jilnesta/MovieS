@@ -58,7 +58,7 @@ namespace MovieShopGateway.Services
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
         }
-    }
+    
 
 
     }
