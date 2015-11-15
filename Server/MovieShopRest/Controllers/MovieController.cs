@@ -40,10 +40,11 @@ namespace MovieShopRest.Controllers
             facade.GetMovieRepository().Delete(id);
         }
 
-        public void PutMovie(int id, Movie movie)
+        public void PutMovie(int idd, Movie movie)
         {
-            movie.Id = id;
+            movie.Id = idd;
             facade.GetMovieRepository().Edit(movie);
+
         }
 
     }
