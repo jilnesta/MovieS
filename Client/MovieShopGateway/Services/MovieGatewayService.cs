@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MovieShopGateway.Services
 {
-   public class MovieGatewayService
+    public class MovieGatewayService
     {
         public IEnumerable<Movie> ReadAll()
         {
@@ -46,8 +46,20 @@ namespace MovieShopGateway.Services
             {
                 HttpResponseMessage response =
                     client.DeleteAsync("http://localhost:44334/api/movie/{id}" + movie.Id).Result;
-                
+
             }
         }
+        public Movie Update(Movie movie)
+        {
+            using (var client = new HttpClient())
+            {
+                HttpResponseMessage response =
+                    client.PutAsJsonAsync("http://localhost:44334/api/movie/{id}", movie).Result;
+                return response.Content.ReadAsAsync<Movie>().Result;
+            }
+        }
+    
+
+
     }
 }

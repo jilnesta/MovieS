@@ -39,5 +39,13 @@ namespace MovieShop.Controllers
             facade.GetMovieGateway().Delete(movie);
             return RedirectToAction("Index", "Movie");
         }
+        public ActionResult PutMovie(int id, Movie movie)
+        {
+            movie.Id = id;
+            facade.GetMovieGateway().Update(movie);
+            return View(movie);
+
+        }
+
     }
 }
