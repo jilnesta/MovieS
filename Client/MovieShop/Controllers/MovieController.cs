@@ -16,6 +16,7 @@ namespace MovieShop.Controllers
         // GET: Movie
         public ActionResult Index()
         {
+            //TEST
             IEnumerable<Movie> movies = facade.GetMovieGateway().ReadAll();
             Debug.WriteLine(movies);
             return View(movies);
