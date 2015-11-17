@@ -177,7 +177,7 @@
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Movie\Index.cshtml" />
     <Content Include="Views\Movie\Create.cshtml" />
-    <Content Include="Views\Movie\PutMovie.cshtml" />
+    <Content Include="Views\Movie\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

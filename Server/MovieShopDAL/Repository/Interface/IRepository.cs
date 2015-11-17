@@ -12,7 +12,6 @@ namespace MovieShopDAL.Repository.Interface
 
         void Add(T item);
 
-
         T Find(int id);
         void Delete(int id);
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,6 +23,12 @@ namespace MovieShop.Controllers
             return View(movies);
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Create(Movie movie)
         {
 
@@ -29,7 +36,7 @@ namespace MovieShop.Controllers
             return View();
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
             Movie movie = facade.GetMovieGateway().Find(id);
             if (movie == null)
@@ -39,10 +46,35 @@ namespace MovieShop.Controllers
             facade.GetMovieGateway().Delete(movie);
             return RedirectToAction("Index", "Movie");
         }
-        public ActionResult PutMovie(int id, Movie movie)
+
+        [HttpGet]
+        public ActionResult Edit(int? id)
         {
-            movie.Id = id;
-            facade.GetMovieGateway().Update(movie);
+            //ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = facade.GetMovieGateway().Find(id);
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(movie);
+        }
+
+        [HttpPost]
+        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl,Genre")] Movie movie)
+        {
+
+            //ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
+            if (ModelState.IsValid)
+            {
+
+                facade.GetMovieGateway().Update(movie);
+                return RedirectToAction("Index");
+            }
+            //facade.GetMovieRepository().Edit(movie);
             return View(movie);
 
         }

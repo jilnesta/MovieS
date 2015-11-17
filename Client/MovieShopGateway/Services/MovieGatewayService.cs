@@ -30,12 +30,12 @@ namespace MovieShopGateway.Services
             }
         }
 
-        public Movie Find(int id)
+        public Movie Find(int? id)
         {
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.GetAsync("http://localhost:44334/api/movie/{id}").Result;
+                    client.GetAsync("http://localhost:44334/api/movie/" + id).Result;
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
         }
@@ -45,7 +45,7 @@ namespace MovieShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.DeleteAsync("http://localhost:44334/api/movie/{id}" + movie.Id).Result;
+                    client.DeleteAsync("http://localhost:44334/api/movie/" + movie.Id).Result;
 
             }
         }
@@ -54,9 +54,10 @@ namespace MovieShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.PutAsJsonAsync("http://localhost:44334/api/movie/{id}", movie).Result;
+                    client.PutAsJsonAsync("http://localhost:44334/api/movie?id=" + movie.Id, movie).Result;
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
+           
         }
     
 
