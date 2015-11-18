@@ -13,5 +13,10 @@ namespace MovieShopGateway
         {
             return new MovieGatewayService();
         }
+
+        public GenreGatewayService GetGenreGateway()
+        {
+            return new GenreGatewayService();
+        }
     }
 }

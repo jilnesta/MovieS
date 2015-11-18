@@ -26,13 +26,14 @@ namespace MovieShop.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.Genres = new SelectList(facade.GetGenreGateway().ReadAll());
             return View();
         }
 
         [HttpPost]
         public ActionResult Create(Movie movie)
         {
-
+            
             facade.GetMovieGateway().Add(movie);
             return View();
         }
