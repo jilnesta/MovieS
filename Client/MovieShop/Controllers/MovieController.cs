@@ -25,7 +25,9 @@ namespace MovieShop.Controllers
 
         public ActionResult Create()
         {
-            facade.GetGenreGateway().ReadAll();
+            Genre genres = new Genre();
+            int id = genres.Id;
+            facade.GetGenreGateway().Find(id);
             return View();
         }
 

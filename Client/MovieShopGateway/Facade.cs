@@ -1,4 +1,4 @@
-﻿using GenreShopGateway.Services;
+﻿
 using MovieShopGateway.Services;
 using System;
 using System.Collections.Generic;
