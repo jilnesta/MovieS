@@ -25,13 +25,14 @@ namespace MovieShop.Controllers
 
         public ActionResult Create()
         {
+            facade.GetGenreGateway().ReadAll();
             return View();
         }
 
         [HttpPost]
         public ActionResult Create(Movie movie)
         {
-
+            
             facade.GetMovieGateway().Add(movie);
             return View();
         }

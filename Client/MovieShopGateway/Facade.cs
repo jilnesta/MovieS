@@ -1,4 +1,5 @@
-﻿using MovieShopGateway.Services;
+﻿using GenreShopGateway.Services;
+using MovieShopGateway.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,11 @@ namespace MovieShopGateway
         public MovieGatewayService GetMovieGateway()
         {
             return new MovieGatewayService();
+        }
+
+        public GenreGatewayService GetGenreGateway()
+        {
+            return new GenreGatewayService();
         }
     }
 }
