@@ -1,5 +1,4 @@
-﻿
-using MovieShopGateway.Services;
+﻿using MovieShopGateway.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
