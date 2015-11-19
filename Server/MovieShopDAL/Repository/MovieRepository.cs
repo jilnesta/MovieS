@@ -57,38 +57,38 @@ namespace MovieShopDAL.Repository
                 {
                     throw new ArgumentNullException("movie");
                 }
-
-                ctx.Movies.Attach(movie);
+                List<Genre> ge = new List<Genre>();
+                GenreRepository genrerep = new GenreRepository();
+                Genre g;
+                for (int i = 0; i < movie.Genres.Count(); ++i)
+                {
+                    g = genrerep.Find(movie.Genres.ElementAt(i).Id);
+                    movie.Genres.ElementAt(i).Name = g.Name;
+                }
                 ctx.Entry(movie).State = EntityState.Modified;
                 ctx.SaveChanges();
-                
-                // //A gift to Lars from KBTZ team. Enjoy!
-                // var movieDB = ctx.Movies.FirstOrDefault(x => x.Id == movie.Id);
-                ////movieDB.Genres = ctx.Genres.FirstOrDefault(x => x.Id == movie.Genres.Id);
 
-                // List<Genre> ge = new List<Genre>();
-                // GenreRepository genrerep = new GenreRepository();
-                // Genre g;
-                // for(int i = 0; i< movie.Genres.Count(); ++i)
-                // {
-                //     g = genrerep.Find(movie.Genres.ElementAt(i).Id);
 
-                //     movieDB.Genres.Add(g);
-                // }
+                ////
 
-                // foreach (var item in movie.Genres)
-                // {
+                //var movieDB = ctx.Movies.FirstOrDefault(x => x.Id == movie.Id);
 
-                // }
+                //for (int i = 0; i < movie.Genres.Count(); ++i)
+                //{
+                //    movie.Genres.CopyTo(movieDB.Genres.ToList(),0);
+                //    movieDB.Genres.Add(movie.Genres.ElementAt(i));
+                //}
 
-                // movieDB.Title = movie.Title;
-                // movieDB.Price = movie.Price;
-                // movieDB.Year = movie.Year;
-                // movieDB.Description = movie.Description;
-                // movieDB.url = movie.url;
-                // movieDB.MovieCoverUrl = movie.MovieCoverUrl;
+                //movieDB.Title = movie.Title;
+                //movieDB.Price = movie.Price;
+                //movieDB.Year = movie.Year;
+                //movieDB.Description = movie.Description;
+                //movieDB.url = movie.url;
+                //movieDB.MovieCoverUrl = movie.MovieCoverUrl;
 
-                // ctx.SaveChanges();
+
+
+                //ctx.SaveChanges();
 
 
             }
