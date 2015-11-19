@@ -19,6 +19,8 @@ namespace MovieShop.Controllers
 
             return View();
         }
+        
+
         //comment
         public ActionResult Contact()
         {

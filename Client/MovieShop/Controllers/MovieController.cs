@@ -16,6 +16,7 @@ namespace MovieShop.Controllers
     {
         private Facade facade = new Facade();
         // GET: Movie
+       
         public ActionResult Index()
         {
             //TEST
