@@ -1,0 +1,76 @@
+﻿@model MovieShop.Models.CreateMovieViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.Title)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.url)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.Description)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.Genres)
+            </th>
+
+            <th></th>
+        </tr>
+
+
+
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Movie.Title)
+            </td>
+
+            <td>
+
+                <iframe width="560" height="315" src="@Model.Movie.url" frameborder="0" allowfullscreen></iframe>
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Movie.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Movie.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Movie.Price)
+            </td>
+
+            <td>
+                <div class="col-md-10">
+                    @Html.ListBoxFor(model => model.SelectedGenres, @Model.Genres)
+                </div>
+
+            </td>
+
+
+        </tr>
+
+
+    </table>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Movie }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

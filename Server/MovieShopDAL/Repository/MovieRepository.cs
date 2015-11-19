@@ -3,6 +3,7 @@ using MovieShopDAL.DomainModel;
 using MovieShopDAL.Repository.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,17 +53,42 @@ namespace MovieShopDAL.Repository
         {
             using (var ctx = new MovieShopContext())
             {
-                //A gift to Lars from KBTZ team. Enjoy!
-                var movieDB = ctx.Movies.FirstOrDefault(x => x.Id == movie.Id);
-                //movieDB.Genres = ctx.Genres.FirstOrDefault(x => x.Id == movie.Genres.Id);
-                movieDB.Title = movie.Title;
-                movieDB.Price = movie.Price;
-                movieDB.Year = movie.Year;
-                movieDB.Description = movie.Description;
-                movieDB.url = movie.url;
-                movieDB.MovieCoverUrl = movie.MovieCoverUrl;
+                if (movie == null)
+                {
+                    throw new ArgumentNullException("movie");
+                }
 
+                ctx.Movies.Attach(movie);
+                ctx.Entry(movie).State = EntityState.Modified;
                 ctx.SaveChanges();
+                
+                // //A gift to Lars from KBTZ team. Enjoy!
+                // var movieDB = ctx.Movies.FirstOrDefault(x => x.Id == movie.Id);
+                ////movieDB.Genres = ctx.Genres.FirstOrDefault(x => x.Id == movie.Genres.Id);
+
+                // List<Genre> ge = new List<Genre>();
+                // GenreRepository genrerep = new GenreRepository();
+                // Genre g;
+                // for(int i = 0; i< movie.Genres.Count(); ++i)
+                // {
+                //     g = genrerep.Find(movie.Genres.ElementAt(i).Id);
+
+                //     movieDB.Genres.Add(g);
+                // }
+
+                // foreach (var item in movie.Genres)
+                // {
+
+                // }
+
+                // movieDB.Title = movie.Title;
+                // movieDB.Price = movie.Price;
+                // movieDB.Year = movie.Year;
+                // movieDB.Description = movie.Description;
+                // movieDB.url = movie.url;
+                // movieDB.MovieCoverUrl = movie.MovieCoverUrl;
+
+                // ctx.SaveChanges();
 
 
             }

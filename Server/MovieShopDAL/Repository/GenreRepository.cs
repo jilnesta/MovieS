@@ -61,10 +61,16 @@ namespace MovieShopDAL.Repository
         }
         public Genre Find(int id)
         {
-            using (var ctx = new MovieShopContext())
-            {
-                return genres.Find(p => p.Id == id);
+            foreach(var item in ReadAll())
+                {
+                if (item.Id == id)
+                {
+                    return item;
+                }
+
             }
+            return null;
         }
     }
+    
 }

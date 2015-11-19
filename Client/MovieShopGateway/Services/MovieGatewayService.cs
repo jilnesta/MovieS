@@ -1,4 +1,5 @@
 ﻿using DtoModel;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,7 +55,7 @@ namespace MovieShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.PutAsJsonAsync("http://localhost:44334/api/movie?id=" + movie.Id, movie).Result;
+                    client.PutAsJsonAsync("http://localhost:44334/api/movie/" + movie.Id, movie).Result;
                 return response.Content.ReadAsAsync<Movie>().Result;
             }
            
