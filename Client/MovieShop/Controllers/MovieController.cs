@@ -1,4 +1,5 @@
 ﻿using DtoModel;
+using MovieShop.Models;
 using MovieShopGateway;
 using System;
 using System.Collections.Generic;
@@ -26,16 +27,27 @@ namespace MovieShop.Controllers
 
         public ActionResult Create()
         {
-            ViewBag.Genres = new SelectList(facade.GetGenreGateway().ReadAll());
-            return View();
+            //IEnumerable<Genre> genres = facade.GetGenreGateway().ReadAll();
+         
+            var model = new CreateMovieViewModel() { Genres = new MultiSelectList(facade.GetGenreGateway().ReadAll(), "Id", "Name") };
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Create(Movie movie)
+        public ActionResult Create(CreateMovieViewModel model)
         {
-            //IEnumerable<Genre> genre = facade.GetGenreGateway().ReadAll();
-            facade.GetMovieGateway().Add(movie);
-            return View();
+
+            if (model.SelectedGenres != null)
+            {
+                var newList = new List<Genre>();
+                foreach (int id in model.SelectedGenres)
+                {
+                    newList.Add(new Genre() { Id = id });
+                }
+                model.Movie.Genres = newList;
+            }
+            facade.GetMovieGateway().Add(model.Movie);
+            return RedirectToAction("Index", "Movie");
         }
 
         public ActionResult Delete(int? id)
@@ -58,11 +70,22 @@ namespace MovieShop.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Movie movie = facade.GetMovieGateway().Find(id);
+            var selectGenres = new List<int>();
+            foreach (var item in movie.Genres)
+            {
+                selectGenres.Add(item.Id);
+            }
+            var model = new CreateMovieViewModel() {
+                Movie = movie,
+                Genres = new MultiSelectList(facade.GetGenreGateway().ReadAll(), "Id", "Name"),
+                SelectedGenres = selectGenres
+            };
+
             if (movie == null)
             {
                 return HttpNotFound();
             }
-            return View(movie);
+            return View(model);
         }
 
         [HttpPost]

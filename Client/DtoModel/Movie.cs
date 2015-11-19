@@ -19,7 +19,7 @@ namespace DtoModel
 
         public double Price { get; set; }
 
-        public IEnumerable<Genre> Genres { get; set; }
+        public virtual IEnumerable<Genre> Genres { get; set; }
 
         public String url { get; set; }
         public String Description { get; set; }
