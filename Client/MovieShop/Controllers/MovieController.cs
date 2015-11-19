@@ -33,7 +33,7 @@ namespace MovieShop.Controllers
         [HttpPost]
         public ActionResult Create(Movie movie)
         {
-            
+            //IEnumerable<Genre> genre = facade.GetGenreGateway().ReadAll();
             facade.GetMovieGateway().Add(movie);
             return View();
         }

@@ -15,7 +15,7 @@ namespace MovieShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.GetAsync("http://localhost:44334/api/Genre/").Result;
+                    client.GetAsync("http://localhost:53416/api/Genre/").Result;
                 return response.Content.ReadAsAsync<IEnumerable<Genre>>().Result;
             }
         }
@@ -25,7 +25,7 @@ namespace MovieShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.PostAsJsonAsync("http://localhost:44334/api/Genre/", Genre).Result;
+                    client.PostAsJsonAsync("http://localhost:53416/api/Genre/", Genre).Result;
                 return response.Content.ReadAsAsync<Genre>().Result;
             }
         }
@@ -35,7 +35,7 @@ namespace MovieShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.GetAsync("http://localhost:44334/api/Genre/" + id).Result;
+                    client.GetAsync("http://localhost:53416/api/Genre/" + id).Result;
                 return response.Content.ReadAsAsync<Genre>().Result;
             }
         }
@@ -45,7 +45,7 @@ namespace MovieShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.DeleteAsync("http://localhost:44334/api/Genre/" + Genre.Id).Result;
+                    client.DeleteAsync("http://localhost:53416/api/Genre/" + Genre.Id).Result;
 
             }
         }
@@ -54,7 +54,7 @@ namespace MovieShopGateway.Services
             using (var client = new HttpClient())
             {
                 HttpResponseMessage response =
-                    client.PutAsJsonAsync("http://localhost:44334/api/Genre?id=" + Genre.Id, Genre).Result;
+                    client.PutAsJsonAsync("http://localhost:53416/api/Genre?id=" + Genre.Id, Genre).Result;
                 return response.Content.ReadAsAsync<Genre>().Result;
             }
 
