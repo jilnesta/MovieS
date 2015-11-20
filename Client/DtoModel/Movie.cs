@@ -25,5 +25,11 @@ namespace DtoModel
         public String Description { get; set; }
 
         public string MovieCoverUrl { get; set; }
+
+        public double PriceEuro { get { return Price * 0.13; } }
+
+        public double PriceDollar { get { return Price * 0.14; } }
+
+        public double PriceISK { get { return Price * 18.88; } }
     }
 }

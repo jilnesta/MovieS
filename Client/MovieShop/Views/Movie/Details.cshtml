@@ -1,0 +1,108 @@
+﻿@model MovieShop.Models.CreateMovieViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(modelItem => modelItem.Movie.Title)</h2>
+
+<div>
+
+    <table class="table">
+        <tr>
+
+
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.url)
+            </th>
+           
+
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.Description)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.Year)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Movie.Genres)
+            </th>
+
+            <th></th>
+        </tr>
+
+
+
+        <tr>
+
+            <td>
+
+                <iframe width="560" height="315" src="@Model.Movie.url" frameborder="0" allowfullscreen></iframe>
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Movie.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Movie.Year)
+            </td>
+
+
+            <td>
+                <div class="col-md-10" contenteditable="false">
+                    @Html.ListBoxFor(model => model.SelectedGenres, @Model.Genres)
+                </div>
+
+            </td>
+
+
+        </tr>
+
+
+    </table>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("DKK")
+            </th>
+            <th>
+                @Html.DisplayName("Euro")
+            </th>
+            <th>
+                @Html.DisplayName("Dollar")
+            </th>
+            <th>
+                @Html.DisplayName("ISK")
+            </th>
+
+        </tr>
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Movie.Price)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Movie.PriceEuro)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Movie.PriceDollar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => modelItem.Movie.PriceISK)
+            </td>
+
+        </tr>
+        </table>
+</div>
+
+
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Movie }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

@@ -89,19 +89,55 @@ namespace MovieShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit([Bind(Include = "Id,Title,Year,Price,url,Description,MovieCoverUrl,Genre")] Movie movie)
+        public ActionResult Edit([Bind(Include = "Movie, Genres, SelectedGenres")] CreateMovieViewModel model)
         {
 
             //ViewBag.Genres = new SelectList(db.Genres, "Id", "Name");
+            
+
+            if (model.SelectedGenres != null)
+            {
+                var newList = new List<Genre>();
+                foreach (int id in model.SelectedGenres)
+                {
+                    newList.Add(new Genre() { Id = id });
+                }
+                model.Movie.Genres = newList;
+            }
             if (ModelState.IsValid)
             {
 
-                facade.GetMovieGateway().Update(movie);
+                facade.GetMovieGateway().Update(model.Movie);
                 return RedirectToAction("Index");
             }
             //facade.GetMovieRepository().Edit(movie);
-            return View(movie);
+            return View(model.Movie);
+        }
 
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Movie movie = facade.GetMovieGateway().Find(id);
+            var selectGenres = new List<int>();
+            foreach (var item in movie.Genres)
+            {
+                selectGenres.Add(item.Id);
+            }
+            var model = new CreateMovieViewModel()
+            {
+                Movie = movie,
+                Genres = new MultiSelectList(facade.GetGenreGateway().ReadAll(), "Id", "Name"),
+                SelectedGenres = selectGenres
+            };
+
+            if (movie == null)
+            {
+                return HttpNotFound();
+            }
+            return View(model);
         }
 
     }
